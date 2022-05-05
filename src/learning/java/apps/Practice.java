@@ -20,6 +20,8 @@ public class Practice {
             printS(breakfast[i]);
         }
 
+        newClass mc = new newClass(4);
+        mc.newMethod(3);
     }
 
     // Static methods are attached to a class, non static methods are attached to an instance of a class
