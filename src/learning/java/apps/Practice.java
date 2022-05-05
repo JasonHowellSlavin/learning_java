@@ -1,35 +1,27 @@
 package learning.java.apps;
+import java.util.Scanner;
 
 public class Practice {
     public static void main(String[] args) {
-        String helloSentence = "Hello from the IDE inside learning.java,apps";
-        String[] breakfast = new String[]{"eggs", "bacon", "toast"};
 
-        printS(helloSentence + "Static method");
+        System.out.println("Welcome to Breakfasttown! We have the following");
+        Breakfast.readItems();
+        System.out.println("Type the combo number you want, or type MMO to make your own");
+        Scanner scanner = new Scanner(System.in);
+        String order = scanner.nextLine();
+        boolean MMO = order.equals("MMO");
 
-        Practice myPractice = new Practice();
-        myPractice.print("Instance method");
+        Breakfast myBreakfast = new Breakfast( MMO);
 
-        for(int i = 0; i < breakfast.length; i++) {
-            printS(breakfast[i]);
+        if (MMO) {
+            System.out.println("Make your own order by typing each item you want followed by a comma!");
+            String mmoOrder = scanner.nextLine();
+            myBreakfast.setOrder(mmoOrder);
+        } else {
+            myBreakfast.setOrder(order);
         }
-
-        breakfast[0] = "apple";
-
-        for(int i = 0; i < breakfast.length; i++) {
-            printS(breakfast[i]);
-        }
-
-        newClass mc = new newClass(4);
-        mc.newMethod(3);
-    }
-
-    // Static methods are attached to a class, non static methods are attached to an instance of a class
-    static void printS(String data) {
-        System.out.println(data);
-    }
-
-    void print(String data) {
-        System.out.println(data);
+        scanner.close();
+        System.out.println("Great, lets confirm your order...");
+        myBreakfast.confirmOrder();
     }
 }
